@@ -1,0 +1,8 @@
+FROM node:16
+WORKDIR project_chat_application/server
+COPY package.json .
+RUN npm i
+COPY . .
+EXPOSE 5000
+CMD ["node index.js"]
+
