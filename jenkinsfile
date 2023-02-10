@@ -1,0 +1,90 @@
+pipeline
+
+{
+    
+    
+
+    parameters{
+    
+    
+        string (name:"IMAGE_NAME",defaultValue:"node:latest",description:"")
+        
+        
+    }
+    
+    
+    agent { 
+        
+        docker { 
+        
+        image params.IMAGE_NAME  
+
+        }
+    }
+    
+   
+    
+    
+    stages {
+        
+        stage ("clone") {
+            
+            steps{
+                
+       
+                    
+                
+                        
+                     checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/adrianhajdin/project_chat_application.git']])
+                    
+            
+                
+            }
+        }
+        
+        
+        stage ("frontend") {
+            
+            agent { 
+        
+                docker { 
+                
+                image params.IMAGE_NAME  
+
+                }
+            }
+            
+            steps{
+                
+                sh "cd /project_chat_application/client"
+                sh " npm i "
+                sh "npm start"
+                
+            }
+        }
+        
+        stage ("backend") {
+            
+            agent {
+                
+                docker {
+                    
+                    image params.IMAGE_NAME  
+
+                }
+
+            }
+            
+            steps{
+                
+                sh "cd /project_chat_application/server"
+		sh "npm i"
+		sh "npm start"
+                
+            }
+        
+        }
+        
+   
+    }
+}
