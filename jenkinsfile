@@ -13,14 +13,7 @@ pipeline
     }
     
     
-    agent { 
-        
-        docker { 
-        
-        image params.IMAGE_NAME  
-
-        }
-    }
+    agent any
     
    
     

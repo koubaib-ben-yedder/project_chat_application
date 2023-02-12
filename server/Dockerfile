@@ -4,5 +4,5 @@ COPY package.json .
 RUN npm i
 COPY . .
 EXPOSE 5000
-CMD ["npm index.js"]
+CMD ["npm","start"]
 
