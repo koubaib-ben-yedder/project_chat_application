@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  frontend:
+    image: 1998275/project_chat_application_client:v1
+    ports:
+      - 3000:3000
+  backend:
+    image: 1998275/project_chat_application_server:v1
+    ports:
+      - 5000:5000
+
+

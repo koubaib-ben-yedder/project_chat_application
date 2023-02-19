@@ -1,8 +1,9 @@
-FROM node:latest
+FROM node:16
 WORKDIR project_chat_application/client
 COPY package.json .
-RUN npm update
 RUN npm i
 COPY . .
-EXPOSE 3000
+EXPOSE 5000
 CMD ["npm","start"]
+
+
