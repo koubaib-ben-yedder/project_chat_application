@@ -1,4 +1,4 @@
 
 
 sh "sudo newgrp docker"
-sh "sudo gsroupadd docker"
+sh "sudo groupadd docker"
