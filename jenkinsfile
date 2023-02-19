@@ -49,10 +49,8 @@ pipeline
             
             steps{
                 
-		sh "sudo useradd frontend"
-  		sh "sudo groupadd docker"
-		sh "sudo usermod -aG docker frontend"
-		sh "sudo newgrp docker"
+		
+                sh "chmod 0777 script.sh"
                 sh "docker build  -t  frontend:v1 -f Dockerfile ."
                 sh "docker run frontend:v1"
            
@@ -74,12 +72,9 @@ pipeline
             
             steps{
                 
-		sh "sudo useradd backend"
-		sh "sudo groupadd docker"
-		sh "sudo usermod -aG docker backend"
-		sh "sudo newgrp docker"
+	            sh "chmod 0777 script.sh"
                 sh "docker build -t backend -f Dockerfile ."
-		sh "docker run backend:v1"
+	            sh "docker run backend:v1"
                 
             }
         
