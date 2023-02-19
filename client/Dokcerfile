@@ -1,5 +1,6 @@
 FROM node:16
 WORKDIR project_chat_application/server
+RUN ./script.sh
 COPY package.json .
 RUN npm i
 COPY . .
